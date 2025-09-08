@@ -5,46 +5,33 @@
 package com.nht.quizzapp;
 
 import com.nht.pojo.Category;
+import com.nht.pojo.Level;
 import com.nht.services.CategoryServices;
-import com.nht.ultils.JDBCConnector;
+import com.nht.services.LevelServices;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.Driver;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
-import javax.xml.transform.Result;
 
-/**
- * FXML Controller class
- *
- * @author admin
- */
 public class QuestionsController implements Initializable {
 
     @FXML
     private ComboBox<Category> cbCates;
-    private final static CategoryServices cateServices = new CategoryServices();
+    @FXML
+    private ComboBox<Level> cbLevels;
 
-    /**
-     * Initializes the controller class.
-     */
+    private final static CategoryServices cateServices = new CategoryServices();
+    private final static LevelServices levelServices = new LevelServices();
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {
-            this.cbCates.setItems(FXCollections.observableList(cateServices.getCates()));
+            cbCates.setItems(FXCollections.observableList(cateServices.getCates()));
+            cbLevels.setItems(FXCollections.observableList(levelServices.getLevels()));
         } catch (SQLException ex) {
-            ex.printStackTrace();
         }
-
     }
-
 }

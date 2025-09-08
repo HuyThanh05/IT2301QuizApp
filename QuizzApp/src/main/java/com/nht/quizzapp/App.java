@@ -9,9 +9,6 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-/**
- * JavaFX App
- */
 public class App extends Application {
 
     private static Scene scene;
@@ -26,12 +23,10 @@ public class App extends Application {
 
     @Override
     public void stop() throws Exception {
-        super.stop(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        super.stop();
         JDBCConnector.getInstance().close();
     }
 
-
-    
     static void setRoot(String fxml) throws IOException {
         scene.setRoot(loadFXML(fxml));
     }
@@ -42,7 +37,7 @@ public class App extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+        launch();       // gọi Application.launch(), tạo JavaFX runtime.
     }
 
 }
